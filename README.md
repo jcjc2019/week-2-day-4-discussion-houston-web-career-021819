@@ -60,7 +60,14 @@ CREATE movie_reviews (
 
 4 . As a user you should be able to leave a Review on a Movie. Would a Review be a property of a User or it's own table? Why? If a Reviewer does not have a direct relationship to a Movie, how can a Movie list the names of it's Reviewers? What would you call this relationship?
 
+Reviews would be their own table. We have to break up the many to many relationship between users and movies they've reviewed. User to review is one to many, review to movie is many to one, breaking apart the many to many relationship between user and movie.
 
+SELECT names FROM users
+JOIN movie_reviews
+ON movie_reviews.user_id = users.id
+JOIN movies
+ON movies.id = movie_reviews.movie_id
+WHERE title = 'Black Panther';
 
 
 <p class='util--hide'>View <a href='https://learn.co/lessons/week-2-day-4-discussion'>Domain Modelling</a> on Learn.co and start learning to code for free.</p>
